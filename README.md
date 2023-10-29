@@ -1,66 +1,208 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+---
+paginate: true
+marp: true
+class: invert
+---
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![bg left:40% 80%](https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Logo.min.svg/2560px-Logo.min.svg.png)
 
-## About Laravel
+# **Laravel**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+PEER les Nawid & Nadyl
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+https://laravel.com/
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+# Inleiding
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Wat is laravel
+- Doel van deze les
+- De opdracht
+- Vragen
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Wat is laravel?
 
-## Laravel Sponsors
+- Open-source PHP framework
+- Eenvoudiger en efficiënter
+- Hulpmiddelen en bibliotheken
+- Model View Controller (MVC) ontwerp
+- Structuur
+- Beginnners tot experts
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+---
 
-### Premium Partners
+# Doel van deze les
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- Leren hoe je gegevens uit een database kunt halen (READ)
+- Tonen van gegevens uit de database
+- Een kijkje in de basisconcepten van Laravel
+- Ervaring
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Voorbereiden
 
-## Code of Conduct
+- Download en installeer NodeJS
+- Download en installeer HeidiSQL
+- Download en installeer git-bash
+- Clone de git repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Nadat de git repo gecloned is, kan je deze openen met een code editor naar keuze (PHPStorm, VSCode, etc)
 
-## Security Vulnerabilities
+Open nu de terminal van je code editor, en volg deze stappen
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+```properties
+composer install
+cp .env.example .env
+php artisan key:generate
+npm install
+npm run dev
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+# Database instellen
+
+- XAMPP/Laragon starten
+- Inloggen met HeidiSQL
+- Maak nieuwe database aan
+
+---
+
+# Environment variables instellen (.env)
+
+- Volg de instructies van onze uitleg
+
+Cache legen (Bij elke aanpassing in .env):
+
+```properties
+php artisan config:cache
+```
+
+---
+
+# Database migrations
+
+Ingeboud in Laravel, snel en gemakkelijk je database beheren, zonder SQL query's te schrijven.
+
+
+> php artisan make:migration <span style="color: #339966;">actie</span>\_<span style="color: #FF6600;">tabelnaam</span>\_<span style="color: #9933CC;">beschrijving</span>
+
+
+
+Voorbeeld voor een migration voor een bestaande table:
+
+> php artisan make:migration <span style="color: #339966;">edit</span>\_<span style="color: #FF6600;">users</span>_<span style="color: #9933CC;">add_bsn_number</span>
+
+Voorbeeld voor een migration voor een nieuwe table:
+
+> php artisan make:migration <span style="color: #339966;">create</span>\_<span style="color: #FF6600;">admins</span>_<span style="color: #9933CC;">table</span>
+
+Om te deleten:
+
+> php artisan make:migration <span style="color: #339966;">delete</span>\_<span style="color: #FF6600;">admins</span>_<span style="color: #9933CC;">table</span>
+---
+# Migration ontwerpen
+Voorbeeld:
+
+```php
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id(); // Auto-increment ID
+            $table->string('name'); // text veld
+            $table->string('email')->unique(); // text veld met unique constraint
+            $table->string('password'); // text veld
+            $table->timestamps(); // Created at en Updated at timestamps
+            $table->softDeletes(); // Optioneel, soft deletes.
+        });
+    }
+```
+Om de alle migrations te runnen:
+```properties
+php artisan migrate
+```
+<span style="color: #ED4337; font-size: 25">*Nooit bestaande migrations aanpassen!*</span>
+
+---
+# Laravel starten
+
+Als het goed is, heb je nu minstens 1 table in je database.
+
+Om laravel te starten, dien je een nieuwe terminal te openen en dit uit te voeren:
+
+
+```properties
+php artisan serve
+```
+
+Default is port 8000, je kan dit zelf instellen met de `--port=<portnumber>` flag.
+Je kan nu via `http://localhost:8000` je laravel applicatie bekijken.
+
+---
+
+# MVC structuur uitleg
+
+**MVC** staat voor **Model View Controller**.
+
+### Model
+- Verantwoordelijk voor gegevens en database.
+- Haalt op, slaat op en bijwerkt.
+
+### View
+- Verantwoordelijk voor wat de gebruiker ziet.
+- Toont gegevens aan de gebruiker.
+
+### Controller
+- Regelt de interactie tussen Model en View.
+- Ontvangt gebruikersinvoer en coördineert acties.
+
+---
+
+# Commands MVC
+
+### Model:
+```properties
+php artisan make:model naam
+```
+
+### View:
+```properties
+php artisan make:view naam
+```
+
+### Controller:
+```properties
+php artisan make:controller naam
+```
+
+---
+
+# Instellen model
+
+Voorbeeld
+```php
+
+protected $table = 'todo'; //Koppelt model met een table in de database
+protected $primaryKey = 'id'; //Geeft aan wat de PK is
+
+//Voor insert of update voeg je dit ook toe:
+
+protected $fillable = [
+    'todo_item', //todo_item field in todo table
+    'added_by' //added_by field in todo table
+];
+
+```
+---
+
+# Instellen controller
+
+Voorbeeld
+```php
+use App\Models\User;
+```
