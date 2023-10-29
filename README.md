@@ -1,8 +1,4 @@
----
-paginate: true
-marp: true
-class: invert
----
+
 
 ![bg left:40% 80%](https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Logo.min.svg/2560px-Logo.min.svg.png)
 
